@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tony_ZeroD — Cybersecurity Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #070b10;
+  --surface: #0e1520;
+  --surface2: #131d2b;
+  --border: rgba(0,210,160,0.13);
+  --border-h: rgba(0,210,160,0.35);
+  --accent: #00d2a0;
+  --accent2: #00f0c8;
+  --text: #ddeeff;
+  --muted: #6a8099;
+  --mono: 'Share Tech Mono', monospace;
+  --sans: 'Syne', sans-serif;
+  --red: #ff4757;
+  --blue: #4da6ff;
+  --amber: #ffb347;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SCANLINE */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,210,160,0.012) 3px, rgba(0,210,160,0.012) 4px);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); }
+
+/* ─── NAV ─── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(7,11,16,0.96);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  padding: 0 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 58px;
+}
+
+.nav-logo {
+  font-family: var(--sans); font-weight: 800; font-size: 1.1rem;
+  letter-spacing: -0.02em; color: var(--text);
+  display: flex; align-items: center; gap: 10px;
+}
+
+.nav-logo .accent { color: var(--accent); }
+
+.nav-pill {
+  font-family: var(--mono); font-size: 0.62rem;
+  color: var(--accent); background: rgba(0,210,160,0.07);
+  border: 1px solid rgba(0,210,160,0.25);
+  padding: 3px 9px; letter-spacing: 0.12em;
+}
+
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-family: var(--mono); font-size: 0.72rem;
+  color: var(--muted); text-decoration: none;
+  letter-spacing: 0.07em; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent); }
+
+/* ─── HERO ─── */
+.hero {
+  padding: 7rem 5% 5rem;
+  max-width: 1100px; margin: 0 auto;
+  position: relative;
+}
+
+.hero-eyebrow {
+  font-family: var(--mono); font-size: 0.68rem;
+  color: var(--accent); letter-spacing: 0.22em;
+  margin-bottom: 1.8rem;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before {
+  content: ''; width: 28px; height: 1px; background: var(--accent);
+}
+
+.hero h1 {
+  font-weight: 800;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1.0; letter-spacing: -0.03em;
+  margin-bottom: 0.4rem;
+}
+
+.hero h1 .handle {
+  color: var(--accent);
+  text-shadow: 0 0 40px rgba(0,210,160,0.3);
+}
+
+.hero-subtitle {
+  font-family: var(--mono);
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  color: var(--muted); margin-bottom: 1.5rem;
+  letter-spacing: 0.04em;
+}
+
+.hero-desc {
+  font-size: 1rem; color: #8faabb;
+  max-width: 560px; line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+.hero-desc strong { color: var(--text); }
+
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.btn-p {
+  font-family: var(--mono); font-size: 0.78rem;
+  letter-spacing: 0.1em; color: var(--bg);
+  background: var(--accent); border: none;
+  padding: 13px 30px; cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  text-decoration: none; display: inline-block;
+  text-transform: uppercase;
+}
+.btn-p:hover { opacity: 0.85; }
+.btn-p:active { transform: scale(0.98); }
+
+.btn-o {
+  font-family: var(--mono); font-size: 0.78rem;
+  letter-spacing: 0.1em; color: var(--accent);
+  background: transparent;
+  border: 1px solid rgba(0,210,160,0.4);
+  padding: 13px 30px; cursor: pointer;
+  transition: background 0.2s; text-decoration: none;
+  display: inline-block; text-transform: uppercase;
+}
+.btn-o:hover { background: rgba(0,210,160,0.07); }
+
+/* ─── STATS BAR ─── */
+.stats-bar {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 2rem 5%;
+  display: flex; justify-content: center;
+  gap: 4rem; flex-wrap: wrap;
+}
+
+.stat { text-align: center; }
+.stat-n {
+  font-family: var(--mono); font-size: 2rem;
+  color: var(--accent); display: block; line-height: 1;
+}
+.stat-l {
+  font-size: 0.68rem; color: var(--muted);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  margin-top: 6px; display: block;
+}
+
+/* ─── SECTION COMMONS ─── */
+.section {
+  max-width: 1100px; margin: 0 auto;
+  padding: 5rem 5%;
+}
+
+.sec-head {
+  display: flex; align-items: center;
+  gap: 14px; margin-bottom: 3rem;
+}
+
+.sec-n {
+  font-family: var(--mono); font-size: 0.68rem;
+  color: var(--accent); letter-spacing: 0.18em;
+}
+
+.sec-title {
+  font-weight: 700; font-size: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.sec-line {
+  flex: 1; height: 1px; background: var(--border);
+}
+
+/* ─── SOBRE MÍ ─── */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 3rem; align-items: start;
+}
+
+.about-text p {
+  color: #8faabb; line-height: 1.85;
+  font-size: 0.95rem; margin-bottom: 1rem;
+}
+.about-text p strong { color: var(--text); }
+
+.about-tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 1.5rem;
+}
+.tag-pill {
+  font-family: var(--mono); font-size: 0.65rem;
+  padding: 5px 12px;
+  background: rgba(0,210,160,0.06);
+  color: var(--accent);
+  border: 1px solid rgba(0,210,160,0.2);
+  letter-spacing: 0.06em;
+}
+
+.training-stack { display: flex; flex-direction: column; gap: 10px; }
+
+.training-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 16px 18px;
+  display: flex; align-items: flex-start; gap: 14px;
+  transition: border-color 0.2s, background 0.2s;
+  cursor: default;
+}
+.training-item:hover {
+  border-color: var(--border-h);
+  background: var(--surface2);
+}
+
+.t-dot {
+  width: 8px; height: 8px;
+  background: var(--accent); flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.t-name {
+  font-family: var(--mono); font-size: 0.78rem;
+  color: var(--accent); letter-spacing: 0.04em;
+  display: block;
+}
+.t-inst {
+  font-size: 0.72rem; color: var(--muted); margin-top: 3px; display: block;
+}
+.t-status {
+  font-family: var(--mono); font-size: 0.6rem;
+  padding: 2px 7px; margin-top: 5px; display: inline-block;
+}
+.t-status.done {
+  color: var(--accent); background: rgba(0,210,160,0.08);
+  border: 1px solid rgba(0,210,160,0.2);
+}
+.t-status.wip {
+  color: var(--amber); background: rgba(255,179,71,0.08);
+  border: 1px solid rgba(255,179,71,0.2);
+}
+
+/* ─── PROYECTOS ─── */
+.projects-wrap {
+  display: flex; flex-direction: column; gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.project-card {
+  background: var(--bg);
+  padding: 2rem 2.5rem;
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: start; gap: 2rem;
+  transition: background 0.2s;
+  cursor: default;
+}
+.project-card:hover { background: var(--surface); }
+
+.p-badge {
+  font-family: var(--mono); font-size: 0.6rem;
+  color: var(--muted); letter-spacing: 0.15em;
+  margin-bottom: 8px; display: block;
+}
+
+.p-name {
+  font-weight: 700; font-size: 1.15rem;
+  letter-spacing: -0.01em; margin-bottom: 6px;
+  color: var(--text);
+}
+
+.p-name .p-accent { color: var(--accent); }
+
+.p-desc {
+  font-size: 0.83rem; color: var(--muted);
+  line-height: 1.7; max-width: 580px;
+}
+
+.p-feat {
+  margin-top: 1rem;
+  display: flex; flex-direction: column; gap: 4px;
+}
+
+.p-feat-item {
+  font-family: var(--mono); font-size: 0.7rem;
+  color: #8faabb;
+  display: flex; align-items: center; gap: 8px;
+}
+.p-feat-item::before {
+  content: '▸'; color: var(--accent); font-size: 0.6rem;
+}
+
+.p-tags {
+  display: flex; flex-direction: column;
+  gap: 6px; align-items: flex-end;
+}
+
+.tag {
+  font-family: var(--mono); font-size: 0.63rem;
+  padding: 4px 10px; white-space: nowrap;
+  letter-spacing: 0.05em;
+}
+.tag.green {
+  background: rgba(0,210,160,0.08); color: var(--accent);
+  border: 1px solid rgba(0,210,160,0.2);
+}
+.tag.red {
+  background: rgba(255,71,87,0.08); color: var(--red);
+  border: 1px solid rgba(255,71,87,0.2);
+}
+.tag.blue {
+  background: rgba(77,166,255,0.08); color: var(--blue);
+  border: 1px solid rgba(77,166,255,0.2);
+}
+.tag.amber {
+  background: rgba(255,179,71,0.08); color: var(--amber);
+  border: 1px solid rgba(255,179,71,0.2);
+}
+
+.p-link {
+  margin-top: 1.2rem;
+  font-family: var(--mono); font-size: 0.7rem;
+  color: var(--accent); text-decoration: none;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid rgba(0,210,160,0.3);
+  padding-bottom: 2px; display: inline-block;
+  transition: border-color 0.2s;
+}
+.p-link:hover { border-color: var(--accent); }
+
+/* ─── SKILLS ─── */
+.skills-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.skill-group {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.8rem;
+}
+
+.sg-title {
+  font-family: var(--mono); font-size: 0.68rem;
+  color: var(--accent); letter-spacing: 0.15em;
+  text-transform: uppercase; margin-bottom: 1.4rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.sg-title::after {
+  content: ''; flex: 1; height: 1px;
+  background: rgba(0,210,160,0.15);
+}
+
+.skill-item {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px; gap: 10px;
+}
+.sk-name { font-size: 0.8rem; color: var(--text); }
+
+.sk-bar { flex: 1; height: 3px; background: rgba(255,255,255,0.05); }
+.sk-fill { height: 100%; background: var(--accent); }
+
+/* ─── CONTACT ─── */
+.contact-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 3.5rem;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 3rem; align-items: start;
+}
+
+.contact-h {
+  font-weight: 700; font-size: 1.6rem;
+  letter-spacing: -0.02em; margin-bottom: 1rem;
+}
+
+.contact-h .accent { color: var(--accent); }
+
+.contact-desc {
+  font-size: 0.88rem; color: var(--muted); line-height: 1.75;
+  margin-bottom: 2rem;
+}
+
+.contact-links { display: flex; flex-direction: column; gap: 12px; }
+
+.c-link {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--mono); font-size: 0.75rem;
+  color: var(--text); text-decoration: none;
+  padding: 12px 16px;
+  background: rgba(0,210,160,0.04);
+  border: 1px solid var(--border);
+  transition: border-color 0.2s, background 0.2s;
+}
+.c-link:hover {
+  border-color: var(--border-h);
+  background: rgba(0,210,160,0.08);
+  color: var(--accent);
+}
+
+.c-icon {
+  width: 32px; height: 32px;
+  background: rgba(0,210,160,0.1);
+  border: 1px solid rgba(0,210,160,0.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 0.85rem; color: var(--accent);
+}
+
+.contact-right {
+  display: flex; flex-direction: column; gap: 16px;
+}
+
+.info-card {
+  background: rgba(0,210,160,0.04);
+  border: 1px solid var(--border);
+  padding: 20px;
+}
+
+.ic-label {
+  font-family: var(--mono); font-size: 0.62rem;
+  color: var(--muted); letter-spacing: 0.15em;
+  text-transform: uppercase; margin-bottom: 6px; display: block;
+}
+.ic-val {
+  font-size: 0.88rem; color: var(--text);
+  font-weight: 600;
+}
+
+.status-dot {
+  display: inline-block; width: 8px; height: 8px;
+  background: var(--accent); margin-right: 8px;
+  border-radius: 50%;
+  animation: blink 1.4s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ─── FOOTER ─── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+
+.footer-copy {
+  font-family: var(--mono); font-size: 0.68rem;
+  color: var(--muted); letter-spacing: 0.06em;
+}
+
+.footer-made {
+  font-family: var(--mono); font-size: 0.65rem;
+  color: var(--muted);
+}
+
+.footer-made span { color: var(--accent); }
+
+/* ─── TERMINAL DECORATION ─── */
+.terminal-deco {
+  position: absolute; right: 5%; top: 50%;
+  transform: translateY(-50%);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 20px 24px;
+  font-family: var(--mono); font-size: 0.7rem;
+  color: var(--muted); line-height: 1.9;
+  width: 340px;
+}
+
+.terminal-deco .t-bar {
+  display: flex; gap: 6px; margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.t-dot-r { width: 10px; height: 10px; background: #ff5f57; }
+.t-dot-y { width: 10px; height: 10px; background: #febc2e; }
+.t-dot-g { width: 10px; height: 10px; background: #28c840; }
+
+.t-prompt { color: var(--accent); }
+.t-cmd { color: var(--text); }
+.t-out { color: var(--muted); }
+.t-cursor {
+  display: inline-block; width: 8px; height: 14px;
+  background: var(--accent); vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+/* SEPARATOR */
+.sep {
+  width: 100%;
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .about-grid, .skills-grid, .contact-wrap { grid-template-columns: 1fr; }
+  .terminal-deco { display: none; }
+  .project-card { grid-template-columns: 1fr; }
+  .p-tags { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+  .nav-links { display: none; }
+  .hero { padding-top: 4rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="accent">//</span> Tony_ZeroD
+    <span class="nav-pill">DISPONIBLE</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#sobre-mi">sobre_mi</a></li>
+    <li><a href="#proyectos">proyectos</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#contacto">contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+
+  <div class="hero-eyebrow">CYBERSECURITY PORTFOLIO</div>
+
+  <h1>
+    Antonio J.<br>
+    Romero F.G.<br>
+    <span class="handle">// Tony_ZeroD</span>
+  </h1>
+
+  <p class="hero-subtitle">
+    Técnico en Explotación de SI &amp; Redes &nbsp;·&nbsp; DAW en Curso &nbsp;·&nbsp; Máster Ciberseguridad &amp; IA
+  </p>
+
+  <p class="hero-desc">
+    Especialista en formación técnica con <strong>enfoque práctico en ciberseguridad</strong>.
+    Desarrollo herramientas de auditoría, pentesting web y vigilancia digital desde Bash y Python.
+    De la ciudad de <strong>Zaragoza</strong>, abierto a oportunidades presenciales y remotas.
+  </p>
+
+  <div class="hero-ctas">
+    <a href="https://github.com/ajromerofg-binary" target="_blank" class="btn-p">Ver GitHub</a>
+    <a href="#contacto" class="btn-o">Contactar</a>
+  </div>
+
+  <!-- Terminal decoration -->
+  <div class="terminal-deco">
+    <div class="t-bar">
+      <div class="t-dot-r"></div>
+      <div class="t-dot-y"></div>
+      <div class="t-dot-g"></div>
+    </div>
+    <div><span class="t-prompt">$ </span><span class="t-cmd">whoami</span></div>
+    <div class="t-out">tony_zerod@binary:~</div>
+    <div><span class="t-prompt">$ </span><span class="t-cmd">cat skills.txt</span></div>
+    <div class="t-out">bash · shell · python · js · html</div>
+    <div class="t-out">owasp-top10 · pentesting · OSINT</div>
+    <div class="t-out">active-directory · linux · networking</div>
+    <div><span class="t-prompt">$ </span><span class="t-cmd">cat status.txt</span></div>
+    <div class="t-out"><span style="color:var(--accent)">▶ BUSCANDO EMPLEO — ZARAGOZA / REMOTO</span></div>
+    <div><span class="t-prompt">$ </span><span class="t-cursor"></span></div>
+  </div>
+
+</header>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat">
+    <span class="stat-n">4+</span>
+    <span class="stat-l">Proyectos propios</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">12</span>
+    <span class="stat-l">Módulos OWASP cubiertos</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">3</span>
+    <span class="stat-l">Títulos / Formaciones</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">100%</span>
+    <span class="stat-l">Open Source</span>
+  </div>
+</div>
+
+<hr class="sep">
+
+<!-- SOBRE MÍ -->
+<section class="section" id="sobre-mi">
+  <div class="sec-head">
+    <span class="sec-n">01.</span>
+    <h2 class="sec-title">Sobre mí</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        Soy <strong>Antonio José Romero Fernández Giro</strong>, conocido en el ámbito técnico como
+        <strong>Tony_ZeroD</strong>. Técnico en Explotación de Sistemas Informáticos y Redes,
+        actualmente cursando el Grado Superior de <strong>Desarrollo de Aplicaciones Web (DAW)</strong>
+        y un <strong>Máster en Ciberseguridad &amp; IA</strong>.
+      </p>
+      <p>
+        Mi enfoque es <strong>práctico y orientado a resultados</strong>: construyo herramientas reales
+        en Bash y Python que resuelven problemas concretos de seguridad, desde la vigilancia digital
+        de datos filtrados hasta el análisis completo de vulnerabilidades web siguiendo el
+        estándar <strong>OWASP Top 10</strong>.
+      </p>
+      <p>
+        Busco una posición en el sector de la ciberseguridad donde poder crecer junto a un equipo
+        técnico, aportando mi capacidad de análisis, mis proyectos propios y mi compromiso con el
+        aprendizaje continuo.
+      </p>
+
+      <div class="about-tags">
+        <span class="tag-pill">Bash / Shell</span>
+        <span class="tag-pill">Python 3</span>
+        <span class="tag-pill">JavaScript</span>
+        <span class="tag-pill">HTML/CSS</span>
+        <span class="tag-pill">Linux</span>
+        <span class="tag-pill">Redes TCP/IP</span>
+        <span class="tag-pill">OWASP Top 10</span>
+        <span class="tag-pill">Active Directory</span>
+        <span class="tag-pill">OSINT</span>
+        <span class="tag-pill">Pentesting Web</span>
+        <span class="tag-pill">nmap · whois · dig</span>
+        <span class="tag-pill">VirusTotal API</span>
+        <span class="tag-pill">Shodan API</span>
+        <span class="tag-pill">HaveIBeenPwned</span>
+      </div>
+    </div>
+
+    <div class="training-stack">
+      <div class="training-item">
+        <div class="t-dot"></div>
+        <div>
+          <span class="t-name">Máster en Ciberseguridad &amp; IA</span>
+          <span class="t-inst">Centro Evolve — Madrid</span>
+          <span class="t-status wip">EN CURSO</span>
+        </div>
+      </div>
+      <div class="training-item">
+        <div class="t-dot"></div>
+        <div>
+          <span class="t-name">Técnico Superior DAW</span>
+          <span class="t-inst">Desarrollo de Aplicaciones Web</span>
+          <span class="t-status wip">EN CURSO</span>
+        </div>
+      </div>
+      <div class="training-item">
+        <div class="t-dot"></div>
+        <div>
+          <span class="t-name">Técnico en Explotación de SSII y Redes</span>
+          <span class="t-inst">Formación Profesional — Completado</span>
+          <span class="t-status done">COMPLETADO</span>
+        </div>
+      </div>
+      <div class="training-item">
+        <div class="t-dot"></div>
+        <div>
+          <span class="t-name">Desarrollo Web Cliente — Enfoque Práctico</span>
+          <span class="t-inst">Proyecto DavanteDent · API REST + JS</span>
+          <span class="t-status done">PROYECTO REAL</span>
+        </div>
+      </div>
+      <div class="training-item">
+        <div class="t-dot"></div>
+        <div>
+          <span class="t-name">Auditoría de Active Directory</span>
+          <span class="t-inst">Pentesting Windows Domain — Proyecto propio</span>
+          <span class="t-status done">PROYECTO REAL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- PROYECTOS -->
+<section class="section" id="proyectos">
+  <div class="sec-head">
+    <span class="sec-n">02.</span>
+    <h2 class="sec-title">Proyectos</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="projects-wrap">
+
+    <!-- HADES -->
+    <div class="project-card">
+      <div>
+        <span class="p-badge">PROYECTO DESTACADO · VIGILANCIA DIGITAL</span>
+        <h3 class="p-name"><span class="p-accent">HADES</span> — Script de Vigilancia Digital</h3>
+        <p class="p-desc">
+          Sistema automático de vigilancia digital diseñado para proteger a empresas y particulares contra
+          la filtración de datos y ciberdelincuencia. Busca menciones de dominios y emails en Pastebin,
+          verifica brechas en HaveIBeenPwned, escanea repositorios GitHub en busca de credenciales
+          expuestas y consulta inteligencia de amenazas con VirusTotal y Shodan.
+        </p>
+        <div class="p-feat">
+          <div class="p-feat-item">6 módulos de vigilancia independientes</div>
+          <div class="p-feat-item">Integración con HaveIBeenPwned, VirusTotal, Shodan, Pastebin</div>
+          <div class="p-feat-item">Reconocimiento WHOIS y DNS 100% legal</div>
+          <div class="p-feat-item">Detección de credenciales expuestas en GitHub</div>
+        </div>
+        <a href="https://github.com/ajromerofg-binary/Hades" target="_blank" class="p-link">
+          github.com/ajromerofg-binary/Hades →
+        </a>
+      </div>
+      <div class="p-tags">
+        <span class="tag green">Shell / Bash</span>
+        <span class="tag amber">OSINT</span>
+        <span class="tag blue">Threat Intel</span>
+        <span class="tag green">API integrations</span>
+      </div>
+    </div>
+
+    <!-- WEBSCAN PRO -->
+    <div class="project-card">
+      <div>
+        <span class="p-badge">HERRAMIENTA DE AUDITORÍA · OWASP TOP 10</span>
+        <h3 class="p-name"><span class="p-accent">WebScan Pro</span> v2.0 — Analizador de Seguridad Web</h3>
+        <p class="p-desc">
+          Escáner de vulnerabilidades web implementado como script Bash autónomo. Cubre los vectores de
+          ataque más frecuentes del OWASP Top 10: SQLi, XSS, XXE, LFI, RFI, Path Traversal, SSRF y SSTI.
+          Genera automáticamente tres informes al finalizar: ejecutivo (dirección), técnico IT y HTML interactivo.
+          Sistema de puntuación de riesgo global 0–100.
+        </p>
+        <div class="p-feat">
+          <div class="p-feat-item">12 módulos de detección independientes</div>
+          <div class="p-feat-item">Pruebas GET, POST form-urlencoded, POST JSON y cabeceras HTTP</div>
+          <div class="p-feat-item">3 informes automáticos por escaneo (ejecutivo, IT, HTML)</div>
+          <div class="p-feat-item">Cobertura de 13 motores de plantillas (SSTI) y detección de CMS</div>
+        </div>
+        <a href="https://github.com/ajromerofg-binary/Web-Scan-Pro" target="_blank" class="p-link">
+          github.com/ajromerofg-binary/Web-Scan-Pro →
+        </a>
+      </div>
+      <div class="p-tags">
+        <span class="tag red">Pentesting</span>
+        <span class="tag green">Bash + Python</span>
+        <span class="tag red">OWASP Top 10</span>
+        <span class="tag blue">Reporting</span>
+      </div>
+    </div>
+
+    <!-- AD AUDIT -->
+    <div class="project-card">
+      <div>
+        <span class="p-badge">HERRAMIENTA · AUDITORÍA WINDOWS / ACTIVE DIRECTORY</span>
+        <h3 class="p-name"><span class="p-accent">AD_Audit</span> — Auditoría de Active Directory</h3>
+        <p class="p-desc">
+          Herramienta de auditoría de seguridad para entornos Active Directory escrita en Bash.
+          Permite a un auditor o pentester analizar de forma ordenada un dominio Windows, desde el
+          reconocimiento inicial hasta la identificación de configuraciones inseguras, cuentas
+          privilegiadas expuestas y vectores de escalada de privilegios.
+        </p>
+        <div class="p-feat">
+          <div class="p-feat-item">Análisis de dominio Windows desde Linux/Bash</div>
+          <div class="p-feat-item">Reconocimiento inicial y enumeración de AD</div>
+          <div class="p-feat-item">Detección de configuraciones inseguras y cuentas expuestas</div>
+          <div class="p-feat-item">Orientado a flujo de trabajo de auditoría profesional</div>
+        </div>
+        <a href="https://github.com/ajromerofg-binary/AD-Audit" target="_blank" class="p-link">
+          github.com/ajromerofg-binary/AD-Audit →
+        </a>
+      </div>
+      <div class="p-tags">
+        <span class="tag red">Pentesting</span>
+        <span class="tag green">Bash</span>
+        <span class="tag amber">Active Directory</span>
+        <span class="tag blue">Windows</span>
+      </div>
+    </div>
+
+    <!-- BASH TOOLS -->
+    <div class="project-card">
+      <div>
+        <span class="p-badge">COLECCIÓN · SCRIPTS DE CIBERSEGURIDAD</span>
+        <h3 class="p-name"><span class="p-accent">Bash-Scripts</span> — Cybersecurity Tools</h3>
+        <p class="p-desc">
+          Colección de herramientas de ciberseguridad desarrolladas en Bash de forma autónoma.
+          Refleja el aprendizaje práctico y la resolución de problemas reales de seguridad en entornos
+          Linux, cubriendo automatización de tareas de reconocimiento, análisis y respuesta.
+        </p>
+        <div class="p-feat">
+          <div class="p-feat-item">Scripts de reconocimiento y enumeración</div>
+          <div class="p-feat-item">Automatización de tareas de análisis de seguridad</div>
+          <div class="p-feat-item">Utilidades para entornos Linux y redes</div>
+        </div>
+        <a href="https://github.com/ajromerofg-binary/Bash-Scripts---Cybersecurity-Tools" target="_blank" class="p-link">
+          github.com/ajromerofg-binary/Bash-Scripts →
+        </a>
+      </div>
+      <div class="p-tags">
+        <span class="tag green">Shell</span>
+        <span class="tag amber">Automatización</span>
+        <span class="tag green">Linux</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="sec-head">
+    <span class="sec-n">03.</span>
+    <h2 class="sec-title">Stack técnico</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="skills-grid">
+
+    <div class="skill-group">
+      <div class="sg-title">Lenguajes</div>
+      <div class="skill-item">
+        <span class="sk-name">Bash / Shell</span>
+        <div class="sk-bar"><div class="sk-fill" style="width:92%"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="sk-name">Python 3</span>
+        <div class="sk-bar"><div class="sk-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="sk-name">JavaScript</span>
+        <div class="sk-bar"><div class="sk-fill" style="width:65%"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="sk-name">HTML / CSS</span>
+        <div class="sk-bar"><div class="sk-fill" style="width:70%"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="sk-name">SQL</span>
+        <div class="sk-bar"><div class="sk-fill" style="width:60%"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="sg-title">Ciberseguridad</div>
+      <div class="skill-item">
+        <span class="sk-name">OWASP Top 10</span>
+        <div class="sk-bar"><div class="sk-fill" style="width:88%"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="sk-name">Pentesting Web</span>
+        <div class="sk-bar"><div class="sk-fill" style="width:82%"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="sk-name">OSINT</span>
+        <div class="sk-bar"><div class="sk-fill" style="width:78%"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="sk-name">Active Directory</span>
+        <div class="sk-bar"><div class="sk-fill" style="width:70%"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="sk-name">Threat Intelligence</span>
+        <div class="sk-bar"><div class="sk-fill" style="width:65%"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="sg-title">Sistemas &amp; Redes</div>
+      <div class="skill-item">
+        <span class="sk-name">Linux (Kali / Ubuntu)</span>
+        <div class="sk-bar"><div class="sk-fill" style="width:88%"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="sk-name">Redes TCP/IP</span>
+        <div class="sk-bar"><div class="sk-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="sk-name">nmap / whois / dig</span>
+        <div class="sk-bar"><div class="sk-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="sk-name">Windows / WSL2</span>
+        <div class="sk-bar"><div class="sk-fill" style="width:72%"></div></div>
+      </div>
+      <div class="skill-item">
+        <span class="sk-name">Git / GitHub</span>
+        <div class="sk-bar"><div class="sk-fill" style="width:75%"></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- CONTACTO -->
+<section class="section" id="contacto">
+  <div class="sec-head">
+    <span class="sec-n">04.</span>
+    <h2 class="sec-title">Contacto</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="contact-wrap">
+    <div>
+      <h3 class="contact-h">Hablemos de <span class="accent">seguridad</span></h3>
+      <p class="contact-desc">
+        Estoy disponible para roles en ciberseguridad, auditoría, desarrollo seguro o cualquier
+        posición donde pueda aportar valor técnico. Abierto a entornos presenciales en Zaragoza
+        y a trabajo remoto en toda España.
+      </p>
+      <div class="contact-links">
+        <a href="https://github.com/ajromerofg-binary" target="_blank" class="c-link">
+          <div class="c-icon">gh</div>
+          github.com/ajromerofg-binary
+        </a>
+        <a href="https://linkedin.com/in/antonio-josé-romero-fdez-giro-a344a1187" target="_blank" class="c-link">
+          <div class="c-icon">in</div>
+          linkedin.com/in/antonio-josé-romero-fdez-giro
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-right">
+      <div class="info-card">
+        <span class="ic-label">Ubicación</span>
+        <span class="ic-val">Zaragoza, Aragón — España</span>
+      </div>
+      <div class="info-card">
+        <span class="ic-label">Modalidad</span>
+        <span class="ic-val">Presencial · Remoto · Híbrido</span>
+      </div>
+      <div class="info-card">
+        <span class="ic-label">Disponibilidad</span>
+        <span class="ic-val">
+          <span class="status-dot"></span>
+          Activamente buscando empleo
+        </span>
+      </div>
+      <div class="info-card">
+        <span class="ic-label">Área de interés</span>
+        <span class="ic-val">Ciberseguridad · Pentesting · DevSecOps</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">© 2026 Antonio J. Romero F.G. — Tony_ZeroD · Evolve Training Center</span>
+  <span class="footer-made">Todos los proyectos son <span>open source</span> · github.com/ajromerofg-binary</span>
+</footer>
+
+</body>
+</html>
