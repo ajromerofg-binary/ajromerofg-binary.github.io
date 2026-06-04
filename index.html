@@ -587,8 +587,8 @@ footer {
     <div><span class="t-prompt">$ </span><span class="t-cmd">whoami</span></div>
     <div class="t-out">tony_zerod@binary:~</div>
     <div><span class="t-prompt">$ </span><span class="t-cmd">cat skills.txt</span></div>
-    <div class="t-out">bash · shell · python · js · html</div>
-    <div class="t-out">owasp-top10 · pentesting · OSINT</div>
+    <div class="t-out">bash · python · php · mysql · js</div>
+    <div class="t-out">owasp-top10 · kerberos · AD · OSINT</div>
     <div class="t-out">active-directory · linux · networking</div>
     <div><span class="t-prompt">$ </span><span class="t-cmd">cat status.txt</span></div>
     <div class="t-out"><span style="color:var(--accent)">▶ BUSCANDO EMPLEO — ZARAGOZA / REMOTO</span></div>
@@ -600,7 +600,7 @@ footer {
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stat">
-    <span class="stat-n">4+</span>
+    <span class="stat-n">4</span>
     <span class="stat-l">Proyectos propios</span>
   </div>
   <div class="stat">
@@ -608,8 +608,8 @@ footer {
     <span class="stat-l">Módulos OWASP cubiertos</span>
   </div>
   <div class="stat">
-    <span class="stat-n">3</span>
-    <span class="stat-l">Títulos / Formaciones</span>
+    <span class="stat-n">6</span>
+    <span class="stat-l">Certificaciones</span>
   </div>
   <div class="stat">
     <span class="stat-n">100%</span>
@@ -650,12 +650,14 @@ footer {
       <div class="about-tags">
         <span class="tag-pill">Bash / Shell</span>
         <span class="tag-pill">Python 3</span>
+        <span class="tag-pill">PHP · MySQL</span>
         <span class="tag-pill">JavaScript</span>
-        <span class="tag-pill">HTML/CSS</span>
+        <span class="tag-pill">HTML/CSS · Bootstrap 5</span>
         <span class="tag-pill">Linux</span>
         <span class="tag-pill">Redes TCP/IP</span>
         <span class="tag-pill">OWASP Top 10</span>
         <span class="tag-pill">Active Directory</span>
+        <span class="tag-pill">Kerberos · DCSync</span>
         <span class="tag-pill">OSINT</span>
         <span class="tag-pill">Pentesting Web</span>
         <span class="tag-pill">nmap · whois · dig</span>
@@ -678,8 +680,32 @@ footer {
         <div class="t-dot"></div>
         <div>
           <span class="t-name">Técnico Superior DAW</span>
-          <span class="t-inst">Desarrollo de Aplicaciones Web</span>
+          <span class="t-inst">Desarrollo de Aplicaciones Web · MEDAC</span>
           <span class="t-status wip">EN CURSO</span>
+        </div>
+      </div>
+      <div class="training-item">
+        <div class="t-dot"></div>
+        <div>
+          <span class="t-name">Curso Certificado de Ciberseguridad</span>
+          <span class="t-inst">IBM · mar. 2026</span>
+          <span class="t-status done">CERTIFICADO</span>
+        </div>
+      </div>
+      <div class="training-item">
+        <div class="t-dot"></div>
+        <div>
+          <span class="t-name">IA y Ciberseguridad (150h)</span>
+          <span class="t-inst">Univ. San Jorge · GDPymes — Next Generation EU · 2025</span>
+          <span class="t-status done">CERTIFICADO</span>
+        </div>
+      </div>
+      <div class="training-item">
+        <div class="t-dot"></div>
+        <div>
+          <span class="t-name">Usos profesionales de la IA Generativa (70h)</span>
+          <span class="t-inst">Bejob + IBM SkillsBuild · jul. 2025</span>
+          <span class="t-status done">CERTIFICADO</span>
         </div>
       </div>
       <div class="training-item">
@@ -688,22 +714,6 @@ footer {
           <span class="t-name">Técnico en Explotación de SSII y Redes</span>
           <span class="t-inst">Formación Profesional — Completado</span>
           <span class="t-status done">COMPLETADO</span>
-        </div>
-      </div>
-      <div class="training-item">
-        <div class="t-dot"></div>
-        <div>
-          <span class="t-name">Desarrollo Web Cliente — Enfoque Práctico</span>
-          <span class="t-inst">Proyecto DavanteDent · API REST + JS</span>
-          <span class="t-status done">PROYECTO REAL</span>
-        </div>
-      </div>
-      <div class="training-item">
-        <div class="t-dot"></div>
-        <div>
-          <span class="t-name">Auditoría de Active Directory</span>
-          <span class="t-inst">Pentesting Windows Domain — Proyecto propio</span>
-          <span class="t-status done">PROYECTO REAL</span>
         </div>
       </div>
     </div>
@@ -722,32 +732,33 @@ footer {
 
   <div class="projects-wrap">
 
-    <!-- HADES -->
+    <!-- LUZ DE HOGAR -->
     <div class="project-card">
       <div>
-        <span class="p-badge">PROYECTO DESTACADO · VIGILANCIA DIGITAL</span>
-        <h3 class="p-name"><span class="p-accent">HADES</span> — Script de Vigilancia Digital</h3>
+        <span class="p-badge">PROYECTO DESTACADO · E-COMMERCE FULL-STACK</span>
+        <h3 class="p-name"><span class="p-accent">Luz de Hogar</span> — Ecommerce PHP/MySQL</h3>
         <p class="p-desc">
-          Sistema automático de vigilancia digital diseñado para proteger a empresas y particulares contra
-          la filtración de datos y ciberdelincuencia. Busca menciones de dominios y emails en Pastebin,
-          verifica brechas en HaveIBeenPwned, escanea repositorios GitHub en busca de credenciales
-          expuestas y consulta inteligencia de amenazas con VirusTotal y Shodan.
+          Aplicación web e-commerce full-stack desarrollada íntegramente en PHP con PDO. Incluye panel
+          de cliente completo (direcciones, favoritos, historial de pedidos), sistema de pedidos con
+          generación de facturas en PDF (dompdf), confirmaciones por email (PHPMailer), módulo de eventos,
+          reseñas con valoración por estrellas y panel de administración con gestión total del negocio.
+          Esquema relacional de 13 tablas. Proyecto integrador DAW.
         </p>
         <div class="p-feat">
-          <div class="p-feat-item">6 módulos de vigilancia independientes</div>
-          <div class="p-feat-item">Integración con HaveIBeenPwned, VirusTotal, Shodan, Pastebin</div>
-          <div class="p-feat-item">Reconocimiento WHOIS y DNS 100% legal</div>
-          <div class="p-feat-item">Detección de credenciales expuestas en GitHub</div>
+          <div class="p-feat-item">Autenticación bcrypt con reset por token seguro (SHA-256 → bcrypt)</div>
+          <div class="p-feat-item">Facturación PDF automática + email de confirmación por pedido</div>
+          <div class="p-feat-item">Panel de administración: productos, pedidos, clientes y eventos</div>
+          <div class="p-feat-item">Consultas parametrizadas PDO — protección SQLi · CSRF tokens</div>
         </div>
-        <a href="https://github.com/ajromerofg-binary/Hades" target="_blank" class="p-link">
-          github.com/ajromerofg-binary/Hades →
+        <a href="https://github.com/ajromerofg-binary/JR_M26_ProductosArtesanales" target="_blank" class="p-link">
+          github.com/ajromerofg-binary/JR_M26_ProductosArtesanales →
         </a>
       </div>
       <div class="p-tags">
-        <span class="tag green">Shell / Bash</span>
-        <span class="tag amber">OSINT</span>
-        <span class="tag blue">Threat Intel</span>
-        <span class="tag green">API integrations</span>
+        <span class="tag green">PHP · MySQL</span>
+        <span class="tag blue">Bootstrap 5</span>
+        <span class="tag amber">Full-Stack</span>
+        <span class="tag red">Seg. Web</span>
       </div>
     </div>
 
@@ -780,58 +791,61 @@ footer {
       </div>
     </div>
 
-    <!-- AD AUDIT -->
+    <!-- ADREAPER -->
     <div class="project-card">
       <div>
-        <span class="p-badge">HERRAMIENTA · AUDITORÍA WINDOWS / ACTIVE DIRECTORY</span>
-        <h3 class="p-name"><span class="p-accent">AD_Audit</span> — Auditoría de Active Directory</h3>
+        <span class="p-badge">HERRAMIENTA OFENSIVA · ACTIVE DIRECTORY</span>
+        <h3 class="p-name"><span class="p-accent">ADReaper</span> — AD Offensive Auditing Tool</h3>
         <p class="p-desc">
-          Herramienta de auditoría de seguridad para entornos Active Directory escrita en Bash.
-          Permite a un auditor o pentester analizar de forma ordenada un dominio Windows, desde el
-          reconocimiento inicial hasta la identificación de configuraciones inseguras, cuentas
-          privilegiadas expuestas y vectores de escalada de privilegios.
+          Herramienta de auditoría ofensiva de Active Directory para Kali Linux. Automatiza las fases de
+          reconocimiento, ataques Kerberos, análisis de ACLs y generación de rutas hacia objetivos
+          privilegiados. Menú interactivo guiado y modo CLI directo. Genera reporte HTML estilo dark
+          con todos los hallazgos de la sesión.
         </p>
         <div class="p-feat">
-          <div class="p-feat-item">Análisis de dominio Windows desde Linux/Bash</div>
-          <div class="p-feat-item">Reconocimiento inicial y enumeración de AD</div>
-          <div class="p-feat-item">Detección de configuraciones inseguras y cuentas expuestas</div>
-          <div class="p-feat-item">Orientado a flujo de trabajo de auditoría profesional</div>
+          <div class="p-feat-item">Kerberoasting · AS-REP Roasting · Pass-the-Hash · DCSync</div>
+          <div class="p-feat-item">Análisis de ACLs: derechos de replicación, AdminCount=1, delegaciones</div>
+          <div class="p-feat-item">Attack Path Advisor: rutas hacia Domain Admin con comandos listos</div>
+          <div class="p-feat-item">Reporte HTML por sesión + instalación automática de dependencias</div>
         </div>
-        <a href="https://github.com/ajromerofg-binary/AD-Audit" target="_blank" class="p-link">
-          github.com/ajromerofg-binary/AD-Audit →
+        <a href="https://github.com/ajromerofg-binary/ADReaper" target="_blank" class="p-link">
+          github.com/ajromerofg-binary/ADReaper →
         </a>
       </div>
       <div class="p-tags">
         <span class="tag red">Pentesting</span>
         <span class="tag green">Bash</span>
         <span class="tag amber">Active Directory</span>
-        <span class="tag blue">Windows</span>
+        <span class="tag blue">Kerberos</span>
       </div>
     </div>
 
-    <!-- BASH TOOLS -->
+    <!-- HADES -->
     <div class="project-card">
       <div>
-        <span class="p-badge">COLECCIÓN · SCRIPTS DE CIBERSEGURIDAD</span>
-        <h3 class="p-name"><span class="p-accent">Bash-Scripts</span> — Cybersecurity Tools</h3>
+        <span class="p-badge">HERRAMIENTA DEFENSIVA · VIGILANCIA DIGITAL · OSINT</span>
+        <h3 class="p-name"><span class="p-accent">HADES</span> — Digital Threat Monitor</h3>
         <p class="p-desc">
-          Colección de herramientas de ciberseguridad desarrolladas en Bash de forma autónoma.
-          Refleja el aprendizaje práctico y la resolución de problemas reales de seguridad en entornos
-          Linux, cubriendo automatización de tareas de reconocimiento, análisis y respuesta.
+          Sistema automático de vigilancia digital diseñado para proteger a empresas y particulares contra
+          la filtración de datos y ciberdelincuencia. Busca menciones de dominios y emails en Pastebin,
+          verifica brechas en HaveIBeenPwned, escanea repositorios GitHub en busca de credenciales
+          expuestas y consulta inteligencia de amenazas con VirusTotal y Shodan.
         </p>
         <div class="p-feat">
-          <div class="p-feat-item">Scripts de reconocimiento y enumeración</div>
-          <div class="p-feat-item">Automatización de tareas de análisis de seguridad</div>
-          <div class="p-feat-item">Utilidades para entornos Linux y redes</div>
+          <div class="p-feat-item">6 módulos de vigilancia independientes</div>
+          <div class="p-feat-item">Integración con HaveIBeenPwned, VirusTotal, Shodan, Pastebin</div>
+          <div class="p-feat-item">Reconocimiento WHOIS y DNS 100% legal</div>
+          <div class="p-feat-item">Detección de credenciales expuestas en GitHub</div>
         </div>
-        <a href="https://github.com/ajromerofg-binary/Bash-Scripts---Cybersecurity-Tools" target="_blank" class="p-link">
-          github.com/ajromerofg-binary/Bash-Scripts →
+        <a href="https://github.com/ajromerofg-binary/Hades" target="_blank" class="p-link">
+          github.com/ajromerofg-binary/Hades →
         </a>
       </div>
       <div class="p-tags">
-        <span class="tag green">Shell</span>
-        <span class="tag amber">Automatización</span>
-        <span class="tag green">Linux</span>
+        <span class="tag green">Shell / Bash</span>
+        <span class="tag amber">OSINT</span>
+        <span class="tag blue">Threat Intel</span>
+        <span class="tag green">API integrations</span>
       </div>
     </div>
 
@@ -857,6 +871,10 @@ footer {
         <div class="sk-bar"><div class="sk-fill" style="width:92%"></div></div>
       </div>
       <div class="skill-item">
+        <span class="sk-name">PHP · MySQL</span>
+        <div class="sk-bar"><div class="sk-fill" style="width:78%"></div></div>
+      </div>
+      <div class="skill-item">
         <span class="sk-name">Python 3</span>
         <div class="sk-bar"><div class="sk-fill" style="width:75%"></div></div>
       </div>
@@ -865,12 +883,8 @@ footer {
         <div class="sk-bar"><div class="sk-fill" style="width:65%"></div></div>
       </div>
       <div class="skill-item">
-        <span class="sk-name">HTML / CSS</span>
-        <div class="sk-bar"><div class="sk-fill" style="width:70%"></div></div>
-      </div>
-      <div class="skill-item">
-        <span class="sk-name">SQL</span>
-        <div class="sk-bar"><div class="sk-fill" style="width:60%"></div></div>
+        <span class="sk-name">HTML / CSS · Bootstrap 5</span>
+        <div class="sk-bar"><div class="sk-fill" style="width:75%"></div></div>
       </div>
     </div>
 
