@@ -638,7 +638,7 @@ footer {
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stat">
-    <span class="stat-n">4</span>
+    <span class="stat-n">6</span>
     <span class="stat-l">Proyectos propios</span>
   </div>
   <div class="stat">
@@ -669,9 +669,8 @@ footer {
     <div class="about-text">
       <p>
         Soy <strong>Antonio José Romero Fernández Giro</strong>, conocido en el ámbito técnico como
-        <strong>Tony_ZeroD</strong>. Técnico en Explotación de Sistemas Informáticos y Redes,
-        actualmente cursando el Grado Superior de <strong>Desarrollo de Aplicaciones Web (DAW)</strong>
-        y un <strong>Máster en Ciberseguridad &amp; IA</strong>. Cuento con experiencia en empresa como
+        <strong>Tony_ZeroD</strong>. Desarrollador Web con base técnica y un
+        <strong>Máster en Ciberseguridad &amp; IA</strong>. Cuento con experiencia en empresa como
         <strong>desarrollador full-stack</strong> durante las prácticas (FCT) en <strong>Zaitec Innova</strong>.
       </p>
       <p>
@@ -860,32 +859,61 @@ footer {
       </div>
     </div>
 
-    <!-- HADES -->
+    <!-- KANGAROO -->
     <div class="project-card">
       <div>
-        <span class="p-badge">HERRAMIENTA DEFENSIVA · VIGILANCIA DIGITAL · OSINT</span>
-        <h3 class="p-name"><span class="p-accent">HADES</span> — Digital Threat Monitor</h3>
+        <span class="p-badge">HERRAMIENTA OFENSIVA · PIVOTING DE RED · POST-EXPLOTACIÓN</span>
+        <h3 class="p-name"><span class="p-accent">Kangaroo</span> — Network Pivoting Automation</h3>
         <p class="p-desc">
-          Sistema automático de vigilancia digital diseñado para proteger a empresas y particulares contra
-          la filtración de datos y ciberdelincuencia. Busca menciones de dominios y emails en Pastebin,
-          verifica brechas en HaveIBeenPwned, escanea repositorios GitHub en busca de credenciales
-          expuestas y consulta inteligencia de amenazas con VirusTotal y Shodan.
+          Automatiza todo el flujo de pivoting post-explotación una vez obtenida una sesión Meterpreter
+          en un host comprometido. Escanea la red interna a través de la sesión, permite seleccionar
+          un objetivo de forma interactiva, configura Autoroute y un proxy SOCKS4a/5, y genera un
+          resource script de Metasploit listo para ejecutar — todo en un solo comando.
         </p>
         <div class="p-feat">
-          <div class="p-feat-item">6 módulos de vigilancia independientes</div>
-          <div class="p-feat-item">Integración con HaveIBeenPwned, VirusTotal, Shodan, Pastebin</div>
-          <div class="p-feat-item">Reconocimiento WHOIS y DNS 100% legal</div>
-          <div class="p-feat-item">Detección de credenciales expuestas en GitHub</div>
+          <div class="p-feat-item">Fase 0 — Recon: Autoroute temporal + TCP portscan de subred interna</div>
+          <div class="p-feat-item">Fase 1 — Pivot: Autoroute permanente a través de la sesión comprometida</div>
+          <div class="p-feat-item">Fase 2 — SOCKS: proxy SOCKS4a/5 en localhost para proxychains</div>
+          <div class="p-feat-item">Fase 3 — Output: .rc resource script + /etc/proxychains4.conf actualizado</div>
         </div>
-        <a href="https://github.com/ajromerofg-binary/Hades" target="_blank" class="p-link">
-          github.com/ajromerofg-binary/Hades →
+        <a href="https://github.com/ajromerofg-binary/Kangaroo" target="_blank" class="p-link">
+          github.com/ajromerofg-binary/Kangaroo →
         </a>
       </div>
       <div class="p-tags">
-        <span class="tag green">Shell / Bash</span>
+        <span class="tag red">Pentesting</span>
+        <span class="tag green">Bash</span>
+        <span class="tag amber">Metasploit</span>
+        <span class="tag blue">SOCKS5</span>
+      </div>
+    </div>
+
+    <!-- GHOSTTAG -->
+    <div class="project-card">
+      <div>
+        <span class="p-badge">HERRAMIENTA DEFENSIVA · CREDENTIAL HUNTING · BLUE TEAM / OSINT</span>
+        <h3 class="p-name"><span class="p-accent">Ghosttag</span> — Credential &amp; Metadata Hunter</h3>
+        <p class="p-desc">
+          Extrae código fuente y archivos de una URL o sitio web completo y busca credenciales, claves API,
+          tokens, hashes, IPs internas y metadatos confidenciales en HTML, JavaScript, CSS, PDFs,
+          documentos Word, hojas Excel, imágenes, bases de datos SQLite y volcados SQL.
+          Funciona como FOCA o metagoofil, pero desde la terminal, scriptable y con informe en TXT o JSON.
+        </p>
+        <div class="p-feat">
+          <div class="p-feat-item">53 patrones regex en 10 categorías: CRITICAL, HIGH y MEDIUM</div>
+          <div class="p-feat-item">8 módulos de análisis: HTML/JS/CSS, PDF, Word, Excel, imágenes, SQLite, SQL dumps</div>
+          <div class="p-feat-item">Detección de API keys (Google, AWS, Stripe, GitHub, JWT), hashes bcrypt/MD5/SHA</div>
+          <div class="p-feat-item">Spider mode hasta 5 niveles de profundidad + output JSON/TXT estructurado</div>
+        </div>
+        <a href="https://github.com/ajromerofg-binary/Ghosttag" target="_blank" class="p-link">
+          github.com/ajromerofg-binary/Ghosttag →
+        </a>
+      </div>
+      <div class="p-tags">
+        <span class="tag blue">Blue Team</span>
+        <span class="tag green">Bash</span>
         <span class="tag amber">OSINT</span>
-        <span class="tag blue">Threat Intel</span>
-        <span class="tag green">API integrations</span>
+        <span class="tag red">OWASP</span>
       </div>
     </div>
 
